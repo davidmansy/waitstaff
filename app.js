@@ -20,10 +20,7 @@ function Meal(mealPrice, taxRate, tipPercentage) {
 //Main controller function
 function Main($scope) {
 
-  //Data
-  var meals = {};
-  meals.stats = {};
-
+  //Data functions
   var initMealsData = function() {
     meals.listOfMeals = [];
     meals.stats.totalTips = 0;
@@ -45,14 +42,7 @@ function Main($scope) {
     return meal;
   };
 
-  //Page init
-  var init = function() {
-    initMealsData();
-    initMealForm();
-    initLastMeal();
-  };
-
-  //Display
+  //Display functions
   var initMealForm = function () {
     vm.mealPrice = 0;
     vm.taxRate = 0;
@@ -76,10 +66,22 @@ function Main($scope) {
     vm.lastMeal.total = newMeal.total;
   };
 
+  //Page init function
+  var init = function() {
+    initMealsData();
+    initMealForm();
+    initLastMeal();
+  };
+
+  //Set up
+  var meals = {};
+  meals.stats = {};
+
   var vm = this;
   vm.mealStats = meals.stats;
   init();
 
+  //View interaction functions
   vm.submitMeal = function () {
     if ($scope.mealForm.$valid) {
       var newMeal = addMeal(vm.mealPrice, vm.taxRate, vm.tipPercentage);
