@@ -1,0 +1,47 @@
+<div ng-controller="Earnings as vm">
+  <!--BEGIN PANEL My Earnings Info-->
+  <div class="panel">
+    <div class="panel-header">
+      <h3>My Earnings Info</h3>
+    </div>
+    <div class="panel-content">
+      <form class="form-horizontal">
+
+        <!--Tiptotal-->
+        <div class="form-group">
+          <label class="col-sm-8 control-label">Tip Total: </label>
+
+          <div class="col-sm-4">
+            <p class="form-control-static">{{vm.mealStats.totalTips | number : 2}}</p>
+          </div>
+        </div>
+        <!--Meal count-->
+        <div class="form-group">
+          <label class="col-sm-8 control-label">Meal count: </label>
+
+          <div class="col-sm-4">
+            <p class="form-control-static">{{vm.mealStats.count}}</p>
+          </div>
+        </div>
+        <!--Average Tip Per Meal-->
+        <div class="form-group">
+          <label class="col-sm-8 control-label">Average Tip Per Meal: </label>
+
+          <div class="col-sm-4">
+            <p class="form-control-static">{{vm.mealStats.averageTipPerMeal | number : 2}}</p>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  <!--END PANEL-->
+
+
+  <!--Button-->
+  <div class="col-sm-1 col-sm-offset-11">
+    <button type="button" class="btn btn-default" ng-click="vm.reset()">Reset</button>
+  </div>
+  <!--END Button-->
+
+</div>

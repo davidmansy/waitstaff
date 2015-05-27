@@ -1,0 +1,109 @@
+<div ng-controller="NewMeal as vm">
+  <!--BEGIN PANEL Enter the Meal Details-->
+  <div class="panel">
+    <div class="panel-header">
+      <h3>Enter the Meal Details</h3>
+    </div>
+    <div class="panel-content">
+      <form class="form-horizontal" name="mealForm" ng-submit="vm.submitMeal()" novalidate>
+
+        <!--Meal Price-->
+        <div class="form-group"
+             ng-class="{'has-error has-feedback' : vm.isInvalid('mealPrice')}">
+          <label for="mealPrice" class="col-sm-6 control-label">Base Meal price: $</label>
+
+          <div class="col-sm-6">
+            <input type="number" min="0.1" class="form-control" id="mealPrice" name="mealPrice"
+                   ng-model="vm.mealPrice" required>
+            <span ng-if="vm.isInvalid('mealPrice')" class="glyphicon glyphicon-remove form-control-feedback"></span>
+            <span ng-if="vm.hasError('mealPrice', 'required')" class="help-block error-block">Required field!</span>
+            <span ng-if="vm.hasError('mealPrice', 'number')" class="help-block error-block">Enter a number!</span>
+                <span ng-if="vm.hasError('mealPrice', 'min')"
+                      class="help-block error-block">The price must be min 0.1$!</span>
+          </div>
+        </div>
+
+        <!--Tax Rate-->
+        <div class="form-group"
+             ng-class="{'has-error has-feedback' : vm.isInvalid('taxRate')}">
+          <label for="taxRate" class="col-sm-6 control-label">Tax Rate: %</label>
+
+          <div class="col-sm-6">
+            <input type="number" class="form-control" id="taxRate" name="taxRate"
+                   ng-model="vm.taxRate" required>
+            <span ng-if="vm.isInvalid('taxRate')" class="glyphicon glyphicon-remove form-control-feedback"></span>
+            <span ng-if="vm.hasError('taxRate', 'required')" class="help-block error-block">Required field!</span>
+            <span ng-if="vm.hasError('taxRate', 'number')" class="help-block error-block">Enter a number!</span>
+          </div>
+        </div>
+
+        <!--Tip Percentage-->
+        <div class="form-group"
+             ng-class="{'has-error has-feedback' : vm.isInvalid('tipPercentage')}">
+          <label for="taxRate" class="col-sm-6 control-label">Tip Percentage: %</label>
+
+          <div class="col-sm-6">
+            <input type="number" class="form-control" id="tipPercentage" name="tipPercentage"
+                   ng-model="vm.tipPercentage" required>
+                <span ng-if="vm.isInvalid('tipPercentage')"
+                      class="glyphicon glyphicon-remove form-control-feedback"></span>
+                <span ng-if="vm.hasError('tipPercentage', 'required')"
+                      class="help-block error-block">Required field!</span>
+                <span ng-if="vm.hasError('tipPercentage', 'number')"
+                      class="help-block error-block">Enter a number!</span>
+          </div>
+        </div>
+
+        <!--Buttons-->
+        <div class="form-group">
+          <div class="col-sm-6">
+            <button type="button" class="btn btn-default pull-right" ng-click="vm.cancel()">Cancel</button>
+          </div>
+          <div class="col-sm-6">
+            <button type="submit" class="btn btn-default btn-primary">Submit</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  <!--END PANEL-->
+
+  <!--BEGIN PANEL Customer Charges-->
+  <div class="panel">
+    <div class="panel-header">
+      <h3>Customer Charges</h3>
+    </div>
+    <div class="panel-content">
+      <form class="form-horizontal">
+
+        <!--Subtotal-->
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Subtotal </label>
+
+          <div class="col-sm-4">
+            <p class="form-control-static">{{vm.lastMeal.subTotal | number : 2}}</p>
+          </div>
+        </div>
+        <!--Tip-->
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Tip </label>
+
+          <div class="col-sm-4">
+            <p class="form-control-static">{{vm.lastMeal.tip | number : 2}}</p>
+          </div>
+        </div>
+        <!--Total-->
+        <div class="form-group total">
+          <label class="col-sm-4 control-label">Total </label>
+
+          <div class="col-sm-4">
+            <p class="form-control-static">{{vm.lastMeal.total | number : 2}}</p>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  <!--END PANEL-->
+</div>
