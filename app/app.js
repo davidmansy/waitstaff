@@ -4,7 +4,7 @@
 'use strict';
 
 angular
-.module('app', ['ngMessages'])
+.module('app', ['ngMessages', 'ngRoute'])
 .config(routing)
 .run(handleRoutingError);
 
@@ -14,10 +14,13 @@ handleRoutingError.$inject = ['$rootScope', '$location'];
 function routing($routeProvider) {
   $routeProvider
   .when('/', {
+    redirectTo: '/home'
+  })
+  .when('/home', {
     templateUrl: 'home/home.html'
   })
   .when('/newmeal', {
-    templateUrl: 'newmeal/newmeal.hmtl'
+    templateUrl: 'newmeal/newmeal.html'
   })
   .when('/earnings', {
     templateUrl: 'earnings/earnings.html'
