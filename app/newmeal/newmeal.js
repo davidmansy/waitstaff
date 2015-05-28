@@ -14,7 +14,6 @@ function NewMeal($scope, meals) {
 
   //View Model Interface
   var vm = this;
-  vm.mealStats = meals.getStats;
   vm.submitMeal = submitMeal;
   vm.cancel = cancel;
   vm.isInvalid = isInvalid;

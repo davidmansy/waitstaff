@@ -1,0 +1,10 @@
+<div ng-controller="Nav as vm" class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <ul class="nav nav-pills nav-justified">
+      <li ng-class="{active: vm.getActiveTab(tab.route)}" ng-repeat="tab in vm.tabs"
+          ng-click="vm.setActiveTab(tab.route)" ng-cloak>
+        <a href="#{{tab.route}}" ng-cloak>{{tab.name}}</a>
+      </li>
+    </ul>
+  </div>
+</div>
