@@ -12,7 +12,7 @@ Earnings.$inject = ['meals'];
 function Earnings(meals) {
 
   var vm = this;
-  vm.mealStats = meals.getStats;
+  vm.mealStats = meals.getStats();
   vm.reset = reset;
 
   function reset() {

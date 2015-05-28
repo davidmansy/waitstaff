@@ -25,13 +25,15 @@ function routing($routeProvider) {
   .when('/earnings', {
     templateUrl: 'earnings/earnings.html'
   })
-  .when('error', {
+  .when('/error', {
     template: '<p>Error - Not found</p>'
-  });
+  })
+  .otherwise('/error');
 }
 
 function handleRoutingError($rootScope, $location) {
   $rootScope.$on('$routeChangeError', function() {
     $location.path('/error');
   });
+
 }
